@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meeting</title>
+  <title>Hand Gesture Controlled Presentation</title>
   <style>
     body {
       margin: 0;
@@ -55,7 +55,7 @@
     .container {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       height: 100vh;
     }
     .product {
@@ -63,20 +63,26 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-right: 20px; /* Adjust spacing */
     }
     #video {
       width: 100%;
       max-width: 100%;
       height: auto;
     }
+    .user-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
     .user-card {
-      width: 15%; /* Small card for default user name takes up 15% of the width */
+      width: 100%;
       background-color: #f0f0f0;
       border: 1px solid #ddd;
       border-radius: 8px;
       padding: 10px;
-      margin-left: 20px; /* Adjust spacing */
       text-align: center;
+      height: 90px; 
     }
     .user-card h2 {
       margin-top: 0;
@@ -119,13 +125,20 @@
   </header>
   <div class="container">
     <div class="product">
-        <h1>Hand Gesture Controlled Presentation</h1>
+        <h1>Student Classroom</h1>
         <img src="{{ url_for('video_feed') }}" id="video" alt="Video feed">
         <button onclick="stopVideo()">Cut</button>
     </div>
-    <div class="user-card">
-      <h2>Default User</h2>
-      <!-- Add additional user information here if needed -->
+    <div class="user-cards-container">
+      <div class="user-card">
+        <h2>Default User 1</h2>
+      </div>
+      <div class="user-card">
+        <h2>Default User 2</h2>
+      </div>
+      <div class="user-card">
+        <h2>Default User 3</h2>
+      </div>
     </div>
   </div>
 

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa; /* Light gray */
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ffffff; /* White */
+      border-bottom: 1px solid #e7e7e7;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 15px solid #333; /* Dark gray */
+      margin-right: 10px;
+    }
+
+    .logo-title {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: 'Bauhaus 93', sans-serif;
+      color: #333; /* Dark gray */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333; /* Dark gray */
+      font-weight: bold;
+    }
+
+    .nav-item.active a {
+      color: #007bff; /* Blue for active link */
+    }
+
+    .main-title {
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      margin: 50px 0;
+      color: #333; /* Dark gray */
+    }
+
+    .animated-box {
+      width: 100%;
+      padding: 25px;
+      background-color: #f8f9fa; /* Light gray */
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Shadow */
+      margin-bottom: 40px;
+      font-size: 16px;
+      color: #333; /* Dark gray */
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .animated-box:hover {
+      transform: translateY(-5px);
+    }
+
+    h3 {
+      margin: 0 0 10px 0;
+      color: #007bff; /* Blue */
+    }
+
+    p {
+      margin: 0;
+      color: #666; /* Medium gray */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <div class="logo-title">DOODLE AI</div>
+    </div>
+    <nav>
+      <ul>
+        <li class="nav-item"><a href="/home">Home</a></li>
+        <li class="nav-item"><a href="/simulation">Simulation</a></li>
+        <li class="nav-item active"><a href="/service">Service</a></li>
+        <li class="nav-item"><a href="/login">Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <div class="main-title">FEATURES</div>
+
+    <div class="animated-box" style="background-color: #fff1e6;"> 
+      <h3>1. Gesture Recognition</h3>
+      <p>- Real-time gesture detection<br>
+        - High accuracy and responsiveness<br>
+        - Supports multiple hand gestures</p>
+    </div>
+    <div class="animated-box" style="background-color: #f0f8ff;"> 
+      <h3>2. Real-Time Text Conversion</h3>
+      <p>- Instantaneous conversion of gestures to text<br>
+        - Smooth and fluid writing experience<br>
+        - Supports multiple languages and character sets</p>
+    </div>
+    <div class="animated-box" style="background-color: #f0ffff;"> 
+      <h3>3. Seamless Integration</h3>
+      <p>- Easy integration with various platforms<br>
+        - Compatibility with common file formats like PPTX<br>
+        - Extensible architecture for future enhancements</p>
+    </div>
+    <div class="animated-box" style="background-color: #f5f5dc;"> 
+      <h3>4. Enhanced Accessibility</h3>
+      <p>- Touchless operation<br>
+        - Suitable for users with limited mobility<br>
+        - Promotes inclusive learning environments</p>
+    </div>
+    <div class="animated-box" style="background-color: #f0f8ff;"> 
+      <h3>5. Health and Safety</h3>
+      <p>- Reduces physical contact<br>
+        - Enhances hygiene in shared spaces<br>
+        - Ideal for use in public and private educational institutions</p>
+    </div>
+  </div>
+</body>
+</html>

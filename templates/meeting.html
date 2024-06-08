@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Gesture Controlled Presentation</title>
+    <style>
+        @font-face {
+            font-family: 'Bauhaus 93';
+            src: url('path_to_your_Bauhaus93_font.woff2') format('woff2'),
+                 url('path_to_your_Bauhaus93_font.woff') format('woff');
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5; /* Light gray */
+            color: #333; /* Dark gray for text */
+            overflow: hidden; /* Hide overflow to prevent scroll bars */
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff; /* White */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo-icon {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 15px solid #333; 
+            margin-right: 10px;
+        }
+        .logo-title {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Bauhaus 93', sans-serif;
+            color: #333; /* Dark gray */
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333; 
+            font-weight: bold;
+        }
+        .nav-item.active a {
+            color: #007bff;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin-top: 30px; 
+            width: 100%;
+        }
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff; /* White */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out; /* Fade in animation */
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .product img {
+            width: 80%; /* Make sure the video covers 80% of the screen */
+            max-height: 60vh; /* Limit the height to 60% of the viewport height */
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px 5px #ccc; /* Glow with medium gray */
+            animation: zoomIn 2s ease-in-out; /* Zoom in animation */
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff4c4c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff1a1a;
+        }
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <div class="logo-title">Doodle AI</div>
+        </div>
+        <nav>
+            <ul>
+                <li class="nav-item active"><a href="/home">Home</a></li>
+                <li class="nav-item"><a href="/simulation">Simulation</a></li>
+                <li class="nav-item"><a href="/service">Service</a></li>
+                <li class="nav-item"><a href="/login">Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="product">
+            <h1>Hand Gesture Controlled Presentation</h1>
+            <img src="{{ url_for('video_feed') }}" id="video" alt="Video feed">
+            <button onclick="stopVideo()">Cut</button>
+        </div>
+    </div>
+
+    <script>
+        function stopVideo() {
+            fetch('/stop_video')
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/home';
+                    } else {
+                        alert('Failed to stop the video feed.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error stopping the video feed:', error);
+                });
+        }
+    </script>
+</body>
+</html>

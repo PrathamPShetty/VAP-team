@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #f8f8f8;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo-icon {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 15px solid teal;
+      margin-right: 10px;
+    }
+    .logo-title {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: 'Bauhaus 93', sans-serif;
+      color: #333;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .nav-item.active a {
+      color: teal;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .product {
+      width: 80%; /* Video feed takes up 80% of the width */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .user-card {
+      width: 15%; /* Small card for default user name takes up 15% of the width */
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      margin-left: 20px; /* Adjust spacing */
+      text-align: center;
+    }
+    .user-card h2 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #ff4c4c;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff1a1a;
+    }
+    button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <div class="logo-title">Doodle AI</div>
+    </div>
+    <nav>
+      <ul>
+        <li class="nav-item"><a href="/home">Home</a></li>
+        <li class="nav-item active"><a href="/simulation">Simulation</a></li>
+        <li class="nav-item"><a href="/service">Service</a></li>
+        <li class="nav-item"><a href="/login">Sign In</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="product">
+        <h1>Hand Gesture Controlled Presentation</h1>
+        <img src="{{ url_for('video_feed') }}" id="video" alt="Video feed">
+        <button onclick="stopVideo()">Cut</button>
+    </div>
+    <div class="user-card">
+      <h2>Default User</h2>
+      <!-- Add additional user information here if needed -->
+    </div>
+  </div>
+
+<script>
+    function stopVideo() {
+        fetch('/stop_video')
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/home';
+                } else {
+                    alert('Failed to stop the video feed.');
+                }
+            })
+            .catch(error => {
+                console.error('Error stopping the video feed:', error);
+            });
+    }
+</script>
+</body>
+</html>
